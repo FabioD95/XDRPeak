@@ -19,7 +19,10 @@
 		A1000010 /* HotkeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000009 /* HotkeyManager.swift */; };
 		A1000011 /* LUTWatchdog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000013 /* LUTWatchdog.swift */; };
 		A1000012 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000014 /* MenuBarController.swift */; };
-		A1000020 /* XDRPeakTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000020 /* XDRPeakTests.swift */; };
+		A1000021 /* GammaControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000021 /* GammaControllerTests.swift */; };
+		A1000022 /* BoostControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000022 /* BoostControllerTests.swift */; };
+		A1000023 /* HotkeyManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000023 /* HotkeyManagerTests.swift */; };
+		A1000024 /* LUTWatchdogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000024 /* LUTWatchdogTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +40,10 @@
 		B1000012 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		B1000013 /* LUTWatchdog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LUTWatchdog.swift; sourceTree = "<group>"; };
 		B1000014 /* MenuBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
-		B1000020 /* XDRPeakTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDRPeakTests.swift; sourceTree = "<group>"; };
+		B1000021 /* GammaControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GammaControllerTests.swift; sourceTree = "<group>"; };
+		B1000022 /* BoostControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostControllerTests.swift; sourceTree = "<group>"; };
+		B1000023 /* HotkeyManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyManagerTests.swift; sourceTree = "<group>"; };
+		B1000024 /* LUTWatchdogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LUTWatchdogTests.swift; sourceTree = "<group>"; };
 		C1000001 /* XDRPeak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XDRPeak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1000002 /* XDRPeakTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XDRPeakTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -113,7 +119,10 @@
 		E1000005 /* XDRPeakTests */ = {
 			isa = PBXGroup;
 			children = (
-				B1000020 /* XDRPeakTests.swift */,
+				B1000022 /* BoostControllerTests.swift */,
+				B1000021 /* GammaControllerTests.swift */,
+				B1000023 /* HotkeyManagerTests.swift */,
+				B1000024 /* LUTWatchdogTests.swift */,
 			);
 			path = XDRPeakTests;
 			sourceTree = "<group>";
@@ -232,7 +241,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1000020 /* XDRPeakTests.swift in Sources */,
+				A1000022 /* BoostControllerTests.swift in Sources */,
+				A1000021 /* GammaControllerTests.swift in Sources */,
+				A1000023 /* HotkeyManagerTests.swift in Sources */,
+				A1000024 /* LUTWatchdogTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
