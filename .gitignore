@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+
+# Xcode — user-specific
+xcuserdata/
+*.xcuserstate
+*.xcuserdatad/
+
+# Xcode — build artifacts
+build/
+DerivedData/
+*.xcarchive
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Claude Code — settings locali (NON committare)
+.claude/settings.local.json
+
+# Release artifacts (vengono allegati alle GitHub Releases, non versionati)
+*.dmg
+*.zip
+*.app
