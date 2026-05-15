@@ -1,24 +1,99 @@
+# ────────────────────────────────────────────────
 # macOS
+# ────────────────────────────────────────────────
 .DS_Store
+._*
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+.fseventsd
 
+# ────────────────────────────────────────────────
 # Xcode — user-specific
+# ────────────────────────────────────────────────
 xcuserdata/
 *.xcuserstate
 *.xcuserdatad/
+*.moved-aside
 
+# ────────────────────────────────────────────────
 # Xcode — build artifacts
+# ────────────────────────────────────────────────
 build/
 DerivedData/
 *.xcarchive
+*.dSYM
+*.dSYM.zip
+*.xcresult
 
+# ────────────────────────────────────────────────
 # Swift Package Manager
+# (Package.resolved resta COMMITTATO — reproducible builds)
+# ────────────────────────────────────────────────
 .build/
 .swiftpm/
 
-# Claude Code — settings locali (NON committare)
-.claude/settings.local.json
+# ────────────────────────────────────────────────
+# Editor / IDE
+# ────────────────────────────────────────────────
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json.example
+.idea/
+*.swp
+*.swo
+*~
+.history/
 
-# Release artifacts (vengono allegati alle GitHub Releases, non versionati)
+# ────────────────────────────────────────────────
+# Claude Code — workflow personale Fabio↔Claude
+# (slash commands, hooks, settings: non utili ai contributor pubblici)
+# ────────────────────────────────────────────────
+.claude/
+
+# ────────────────────────────────────────────────
+# Doc di processo personali (NON vanno nel repo pubblico)
+# Vivono solo nel filesystem locale, caricati dal hook SessionStart.
+# Il repo `-dev` privato contiene tutto il dev journal + history.
+# ────────────────────────────────────────────────
+HANDOFF.md
+PLAN.md
+DECISIONS.md
+PROGRESS.md
+CLAUDE.md
+
+# ────────────────────────────────────────────────
+# Env & secrets (signing, notarization, API keys)
+# ⚠️ NON committare MAI questi — Developer ID compromesso
+# ────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.p12
+*.pem
+*.key
+*.cer
+*.certSigningRequest
+*.mobileprovision
+*.provisionprofile
+AuthKey_*.p8
+notarization-*.json
+secrets/
+private/
+
+# ────────────────────────────────────────────────
+# Release artifacts (allegati alle GitHub Releases, non versionati)
+# ────────────────────────────────────────────────
 *.dmg
 *.zip
 *.app
+*.pkg
+
+# ────────────────────────────────────────────────
+# Logs / temp
+# ────────────────────────────────────────────────
+*.log
+logs/
+tmp/
+.tmp/
