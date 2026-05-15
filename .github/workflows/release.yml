@@ -1,0 +1,152 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing tag to release (e.g. v1.0.0). Leave empty to use the current ref.'
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build, sign, notarize, publish
+    runs-on: macos-14
+    timeout-minutes: 30
+
+    env:
+      APP_NAME: XDRPeak
+      APPLE_ID: ${{ secrets.APPLE_ID }}
+      APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+      APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+
+      - name: Show toolchain
+        run: |
+          xcodebuild -version
+          sw_vers
+
+      - name: Resolve version from tag
+        id: version
+        run: |
+          REF="${{ inputs.tag || github.ref_name }}"
+          VERSION="${REF#v}"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Release version: $VERSION"
+
+      - name: Import Developer ID certificate
+        uses: Apple-Actions/import-codesign-certs@v3
+        with:
+          p12-file-base64: ${{ secrets.DEVELOPER_ID_CERT_BASE64 }}
+          p12-password: ${{ secrets.DEVELOPER_ID_CERT_PWD }}
+
+      - name: Archive (Release, Developer ID)
+        run: |
+          xcodebuild \
+            -project XDRPeak.xcodeproj \
+            -scheme XDRPeak \
+            -configuration Release \
+            -destination 'generic/platform=macOS' \
+            -archivePath build/XDRPeak.xcarchive \
+            CODE_SIGN_STYLE=Manual \
+            DEVELOPMENT_TEAM=$APPLE_TEAM_ID \
+            CODE_SIGN_IDENTITY="Developer ID Application" \
+            archive
+
+      - name: Export .app
+        run: |
+          cat > build/exportOptions.plist <<EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+              <key>method</key>
+              <string>developer-id</string>
+              <key>teamID</key>
+              <string>$APPLE_TEAM_ID</string>
+              <key>signingStyle</key>
+              <string>manual</string>
+              <key>signingCertificate</key>
+              <string>Developer ID Application</string>
+          </dict>
+          </plist>
+          EOF
+
+          xcodebuild \
+            -exportArchive \
+            -archivePath build/XDRPeak.xcarchive \
+            -exportPath build/export \
+            -exportOptionsPlist build/exportOptions.plist
+
+      - name: Notarize and staple .app
+        run: |
+          cd build/export
+          ditto -c -k --keepParent XDRPeak.app XDRPeak.zip
+
+          xcrun notarytool submit XDRPeak.zip \
+            --apple-id "$APPLE_ID" \
+            --team-id "$APPLE_TEAM_ID" \
+            --password "$APPLE_APP_PASSWORD" \
+            --wait
+
+          xcrun stapler staple XDRPeak.app
+          rm XDRPeak.zip
+
+      - name: Create DMG
+        run: |
+          brew install create-dmg
+          VERSION="${{ steps.version.outputs.version }}"
+          create-dmg \
+            --volname "XDRPeak $VERSION" \
+            --window-pos 200 120 \
+            --window-size 600 400 \
+            --icon-size 100 \
+            --icon "XDRPeak.app" 150 200 \
+            --hide-extension "XDRPeak.app" \
+            --app-drop-link 450 200 \
+            "build/XDRPeak-$VERSION.dmg" \
+            "build/export/XDRPeak.app"
+
+      - name: Codesign, notarize and staple .dmg
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          DMG="build/XDRPeak-$VERSION.dmg"
+
+          codesign --sign "Developer ID Application" --timestamp "$DMG"
+
+          xcrun notarytool submit "$DMG" \
+            --apple-id "$APPLE_ID" \
+            --team-id "$APPLE_TEAM_ID" \
+            --password "$APPLE_APP_PASSWORD" \
+            --wait
+
+          xcrun stapler staple "$DMG"
+
+      - name: Verify signature and notarization
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          DMG="build/XDRPeak-$VERSION.dmg"
+
+          codesign --verify --deep --strict --verbose=2 build/export/XDRPeak.app
+          spctl --assess --type execute --verbose=2 build/export/XDRPeak.app
+          spctl --assess --type open --context context:primary-signature --verbose=2 "$DMG"
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.tag || github.ref_name }}
+          files: build/XDRPeak-*.dmg
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          draft: false
+          prerelease: false
