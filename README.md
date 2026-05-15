@@ -5,6 +5,7 @@
 > brightness range — up to ~1600 nits on supported Macs, in any workflow,
 > not just HDR video playback.
 
+[![CI](https://github.com/FabioD95/XDRPeak/actions/workflows/ci.yml/badge.svg)](https://github.com/FabioD95/XDRPeak/actions/workflows/ci.yml)
 [![License: GPL-3.0](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](LICENSE)
 [![macOS 14+](https://img.shields.io/badge/macOS-14%20Sonoma%2B-black.svg)](https://www.apple.com/macos/)
 [![Apple Silicon](https://img.shields.io/badge/Apple%20Silicon-required-orange.svg)](https://support.apple.com/en-us/HT211814)
