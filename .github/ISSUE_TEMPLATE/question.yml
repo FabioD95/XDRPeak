@@ -1,0 +1,26 @@
+name: Question
+description: Ask a question about XDRPeak.
+title: "[question] "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Questions are better discussed in [GitHub Discussions](https://github.com/FabioD95/XDRPeak/discussions) than in the issue tracker — issues are reserved for actionable bug reports and feature requests.
+
+        Please consider [opening a discussion](https://github.com/FabioD95/XDRPeak/discussions/new/choose) instead. If you really think this belongs as an issue, continue below.
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What were you trying to do when the question came up?
+    validations:
+      required: false

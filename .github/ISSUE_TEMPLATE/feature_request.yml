@@ -1,0 +1,48 @@
+name: Feature request
+description: Suggest a new feature or improvement.
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the suggestion!
+
+        Before submitting, please:
+        - Check the [non-goals list in CHANGELOG.md](https://github.com/FabioD95/XDRPeak/blob/main/CHANGELOG.md#notes--explicit-non-goals-of-this-release) — some features are explicitly out of scope for v1.0.0 but planned for later.
+        - Search [existing issues and discussions](https://github.com/FabioD95/XDRPeak/issues?q=is%3Aissue) to avoid duplicates.
+        - For wide-ranging ideas, consider opening a [Discussion](https://github.com/FabioD95/XDRPeak/discussions) first.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What problem are you trying to solve? Describe the user-facing pain, not the technical fix.
+      placeholder: "When I connect an external XDR display, only my main screen gets boosted."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: How would you like XDRPeak to behave? Concrete is better than abstract.
+      placeholder: "When toggling the boost, apply it to every XDR-capable display rather than just NSScreen.main."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Workarounds you've tried, other apps that handle this, or alternative designs you've thought about.
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Screenshots, links to related projects, anything else that helps.
+    validations:
+      required: false

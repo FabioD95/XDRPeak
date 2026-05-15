@@ -1,0 +1,86 @@
+name: Bug report
+description: Something in XDRPeak doesn't behave the way it should.
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug report.
+
+        Before submitting, please:
+        - Search [existing issues](https://github.com/FabioD95/XDRPeak/issues?q=is%3Aissue) to avoid duplicates.
+        - If this looks like a security vulnerability, **do not file it here** — email `fabio.delrio95@gmail.com` instead. See [`SECURITY.md`](https://github.com/FabioD95/XDRPeak/blob/main/SECURITY.md).
+
+  - type: input
+    id: xdrpeak-version
+    attributes:
+      label: XDRPeak version
+      description: From `XDRPeak.app → About`, or the version of the `.dmg` you installed.
+      placeholder: "1.0.0"
+    validations:
+      required: true
+
+  - type: input
+    id: macos-version
+    attributes:
+      label: macOS version
+      description: Apple menu → About This Mac. Include the build number if you can.
+      placeholder: "14.4.1 (23E224)"
+    validations:
+      required: true
+
+  - type: input
+    id: chip
+    attributes:
+      label: Apple Silicon chip
+      description: Output of `sysctl -n machdep.cpu.brand_string`.
+      placeholder: "Apple M1 Pro"
+    validations:
+      required: true
+
+  - type: input
+    id: display
+    attributes:
+      label: Display model
+      description: Internal (which MBP / Studio Display) or external (Pro Display XDR, third-party, ...).
+      placeholder: "MacBook Pro 14-inch built-in Liquid Retina XDR"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: What did you do? Include hotkey combos, menu clicks, display configuration, brightness slider position, etc.
+      placeholder: |
+        1. Launch XDRPeak
+        2. Press ⌘⇧B
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      placeholder: "The display should boost to peak XDR brightness."
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What happened instead? Include screenshots / screen recordings if visual.
+      placeholder: "The screen turned solid white and stayed white until I pressed ⌘⇧⌥B."
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Anything else relevant — other display tools running (Lunar, BetterDisplay, BrightIntosh), Night Shift state, recent macOS update, etc.
+    validations:
+      required: false
