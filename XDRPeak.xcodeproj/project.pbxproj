@@ -12,6 +12,13 @@
 		A1000003 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1000010 /* Metal.framework */; };
 		A1000004 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1000011 /* MetalKit.framework */; };
 		A1000005 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1000012 /* Carbon.framework */; };
+		A1000006 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000005 /* AppDelegate.swift */; };
+		A1000007 /* BoostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000006 /* BoostController.swift */; };
+		A1000008 /* GammaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000007 /* GammaController.swift */; };
+		A1000009 /* HDRPixelTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000008 /* HDRPixelTrigger.swift */; };
+		A1000010 /* HotkeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000009 /* HotkeyManager.swift */; };
+		A1000011 /* LUTWatchdog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000013 /* LUTWatchdog.swift */; };
+		A1000012 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000014 /* MenuBarController.swift */; };
 		A1000020 /* XDRPeakTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000020 /* XDRPeakTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -20,9 +27,16 @@
 		B1000002 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1000003 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1000004 /* XDRPeak.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XDRPeak.entitlements; sourceTree = "<group>"; };
+		B1000005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B1000006 /* BoostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostController.swift; sourceTree = "<group>"; };
+		B1000007 /* GammaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GammaController.swift; sourceTree = "<group>"; };
+		B1000008 /* HDRPixelTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDRPixelTrigger.swift; sourceTree = "<group>"; };
+		B1000009 /* HotkeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyManager.swift; sourceTree = "<group>"; };
 		B1000010 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		B1000011 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		B1000012 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		B1000013 /* LUTWatchdog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LUTWatchdog.swift; sourceTree = "<group>"; };
+		B1000014 /* MenuBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
 		B1000020 /* XDRPeakTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDRPeakTests.swift; sourceTree = "<group>"; };
 		C1000001 /* XDRPeak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XDRPeak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1000002 /* XDRPeakTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XDRPeakTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +77,13 @@
 			isa = PBXGroup;
 			children = (
 				B1000001 /* main.swift */,
+				B1000005 /* AppDelegate.swift */,
+				B1000006 /* BoostController.swift */,
+				B1000008 /* HDRPixelTrigger.swift */,
+				B1000007 /* GammaController.swift */,
+				B1000013 /* LUTWatchdog.swift */,
+				B1000014 /* MenuBarController.swift */,
+				B1000009 /* HotkeyManager.swift */,
 				B1000002 /* Assets.xcassets */,
 				B1000003 /* Info.plist */,
 				B1000004 /* XDRPeak.entitlements */,
@@ -197,6 +218,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1000001 /* main.swift in Sources */,
+				A1000006 /* AppDelegate.swift in Sources */,
+				A1000007 /* BoostController.swift in Sources */,
+				A1000009 /* HDRPixelTrigger.swift in Sources */,
+				A1000008 /* GammaController.swift in Sources */,
+				A1000011 /* LUTWatchdog.swift in Sources */,
+				A1000012 /* MenuBarController.swift in Sources */,
+				A1000010 /* HotkeyManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

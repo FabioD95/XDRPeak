@@ -1,22 +1,13 @@
+// XDRPeak — Peak XDR brightness for your Mac display.
+// Copyright (C) 2026 Fabio Del Rio
+// SPDX-License-Identifier: GPL-3.0-or-later
+// This file is part of XDRPeak. See LICENSE for full terms.
+//
+
 import Cocoa
 
 let app = NSApplication.shared
+let delegate = AppDelegate()
+app.delegate = delegate
 app.setActivationPolicy(.accessory)
-
-let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-statusItem.button?.image = NSImage(
-    systemSymbolName: "sun.max",
-    accessibilityDescription: "XDRPeak"
-)
-
-let menu = NSMenu(title: "XDRPeak")
-menu.addItem(
-    NSMenuItem(
-        title: "Quit XDRPeak",
-        action: #selector(NSApplication.terminate(_:)),
-        keyEquivalent: "q"
-    )
-)
-statusItem.menu = menu
-
 app.run()
