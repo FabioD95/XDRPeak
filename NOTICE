@@ -1,0 +1,50 @@
+XDRPeak
+Copyright (C) 2026 Fabio Del Rio
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version. See LICENSE for the full text.
+
+
+================================================================================
+Acknowledgements
+================================================================================
+
+XDRPeak builds on the work of several open-source projects and developers
+who pioneered the techniques used to push Apple displays beyond 500 nits.
+
+────────────────────────────────────────────────────────────────────────────────
+BrightXDR — Dmitry Starkov (starkdmi)
+https://github.com/starkdmi/BrightXDR
+Licensed under GPL-3.0.
+
+The original BrightXDR demonstrated the menu-bar utility model for unlocking
+Apple's eXtended Dynamic Range mode programmatically. XDRPeak inherits the
+GPL-3.0 license from this upstream project.
+
+────────────────────────────────────────────────────────────────────────────────
+BrightIntosh — Niklas Rousset (niklasr22)
+https://github.com/niklasr22/BrightIntosh
+Licensed under GPL-3.0.
+
+The 1×1 HDR pixel technique used to flip the display into EDR mode without
+a full-screen overlay, the per-chip gamma factor values (1.59 on M1/M2,
+1.535 on M3+), and the EDR clear-color formula
+(maxEDR / max(maxRenderedEDR, 1.0) - 1.0) all come from BrightIntosh.
+
+────────────────────────────────────────────────────────────────────────────────
+Lunar — Alin Panaitiu (alin23)
+https://lunar.fyi · https://github.com/alin23/Lunar
+Licensed under GPL-3.0.
+
+Lunar's analysis of EDR headroom signals on Apple displays and its Full
+Range mode investigation informed XDRPeak's pre-flight headroom poll, which
+prevents applying gamma > 1.0 before EDR mode has actually engaged on the
+display (avoiding the "all-white screen" failure mode).
+
+================================================================================
+
+XDRPeak does not bundle, link against, or redistribute source code from these
+projects. The techniques are independently re-implemented; the credits above
+are intellectual attribution.
